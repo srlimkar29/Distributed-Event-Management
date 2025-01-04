@@ -1,0 +1,8 @@
+services:
+  frontend:
+    build:
+      context: ./front-end/frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"  # Map port 3000 on host to port 80 in the container
+    container_name: frontend-app
