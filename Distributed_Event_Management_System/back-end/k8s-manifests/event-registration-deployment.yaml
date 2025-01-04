@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: event-registration
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: event-registration
+  template:
+    metadata:
+      labels:
+        app: event-registration
+    spec:
+      containers:
+      - name: event-registration
+        image: event-registration-service:latest
+        ports:
+        - containerPort: 3001
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: event-registration-service
+spec:
+  selector:
+    app: event-registration
+  ports:
+    - protocol: TCP
+      port: 3001
+      targetPort: 3001
+  type: LoadBalancer

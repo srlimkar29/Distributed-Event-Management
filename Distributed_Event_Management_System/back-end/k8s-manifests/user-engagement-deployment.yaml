@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-engagement
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: user-engagement
+  template:
+    metadata:
+      labels:
+        app: user-engagement
+    spec:
+      containers:
+      - name: user-engagement
+        image: user-engagement-service:latest
+        ports:
+        - containerPort: 3003
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-engagement-service
+spec:
+  selector:
+    app: user-engagement
+  ports:
+    - protocol: TCP
+      port: 3003
+      targetPort: 3003
+  type: LoadBalancer

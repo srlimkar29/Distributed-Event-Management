@@ -1,0 +1,24 @@
+{
+    "family": "ticketing-task",
+    "networkMode": "awsvpc",
+    "executionRoleArn": "arn:aws:iam::515966506771:role/ecs-role-event-management",
+    "containerDefinitions": [
+      {
+        "name": "ticketing",
+        "image": "515966506771.dkr.ecr.us-east-1.amazonaws.com/ticketing-service:latest",
+        "memory": 512,
+        "cpu": 256,
+        "essential": true,
+        "portMappings": [
+          {
+            "containerPort": 3002,
+            "protocol": "tcp"
+          }
+        ]
+      }
+    ],
+    "requiresCompatibilities": ["FARGATE"],
+    "cpu": "256",
+    "memory": "512"
+  }
+  
