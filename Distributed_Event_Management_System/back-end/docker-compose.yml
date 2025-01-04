@@ -1,0 +1,51 @@
+networks:
+  backend-network:
+
+services:
+  event-registration:
+    build:
+      context: ./event-registration
+    ports:
+      - "3001:3001"
+    container_name: event-registration-service
+    env_file:
+      - ./event-registration/.env
+    networks:
+      - backend-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  ticketing:
+    build:
+      context: ./ticketing
+    ports:
+      - "3002:3002"
+    container_name: ticketing-service
+    env_file:
+      - ./ticketing/.env
+    networks: 
+      - backend-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  user-engagement:
+    build:
+      context: ./user-engagement
+    ports:
+      - "3003:3003"
+    container_name: user-engagement-service
+    env_file:
+      - ./user-engagement/.env
+    networks:
+      - backend-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
