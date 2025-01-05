@@ -116,4 +116,3 @@ Author: Shubham Limkar | Email: shubham.limkar@ucdconnect.ie
 Author: Maithilee Nargide | Email: maithilee.nargide@ucdconnect.ie
 
 Thank You!
-# Distributed-Event-Management
